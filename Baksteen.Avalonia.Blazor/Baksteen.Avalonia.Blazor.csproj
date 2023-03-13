@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <Title>Baksteen.Avalonia.Blazor</Title>
+    <Summary>Avalonia BlazorWebView component</Summary>
+    <Description>Avalonia BlazorWebView component</Description>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Baksteen.Avalonia.Blazor</RootNamespace>
+    <PackageId>Baksteen.Avalonia.Blazor</PackageId>
+    <PackageTags>$(PackageTags);avalonia;blazor</PackageTags>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.0-preview5" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.59" />
+  </ItemGroup>
+</Project>

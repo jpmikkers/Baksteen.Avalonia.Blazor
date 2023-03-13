@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:DemoApp"
+             x:Class="DemoApp.App">
+
+	<Application.DataTemplates>
+		<!--<local:ViewLocator/>-->
+	</Application.DataTemplates>
+	
+	<Application.Styles>
+		<!--<SimpleTheme/>-->
+		<FluentTheme/>
+				<Style Selector="Window">
+			<Setter Property="Background" Value="#FF444444"/>
+		</Style>
+	</Application.Styles>
+</Application>
