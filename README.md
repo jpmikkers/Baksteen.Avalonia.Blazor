@@ -1,5 +1,5 @@
 # Baksteen.Avalonia.Blazor
-Blazor webview component for Avalonia. Includes hybrid Avalonia-Blazor demo app.
+Build Avalonia-Blazor hybrid desktop applications using this Blazor webview component for Avalonia. Includes hybrid Avalonia-Blazor demo app.
 
 ## Screenshot
 <img src="./Screens/screenshot.png" width="50%" height="50%">
