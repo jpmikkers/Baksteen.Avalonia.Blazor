@@ -18,15 +18,15 @@ public class MainWindowViewModel : ViewModelBase
     private double _zoom = 1.0;
 
     public double Zoom
-	{ 
-		get => _zoom; 
-		set => this.RaiseAndSetIfChanged(ref _zoom, value); 
-	}
+    {
+        get => _zoom;
+        set => this.RaiseAndSetIfChanged(ref _zoom, value);
+    }
 
     public MainWindowViewModel()
     {
-		if(!Avalonia.Controls.Design.IsDesignMode)
-		{
-		}
-	}
+        if(!Avalonia.Controls.Design.IsDesignMode)
+        {
+        }
+    }
 }

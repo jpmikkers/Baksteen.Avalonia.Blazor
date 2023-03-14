@@ -9,11 +9,11 @@ namespace DemoApp;
 
 public partial class App : Application
 {
-    public IServiceProvider MyServices { get; private set; }
+    public IServiceProvider Services { get; private set; }
 
     public App(IServiceProvider services) : base()
     {
-        MyServices = services;  
+        Services = services;
     }
 
     public override void Initialize()
@@ -23,13 +23,13 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-		if(ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-		{
-			desktop.MainWindow = new MainWindow
-			{
-				DataContext = new MainWindowViewModel(),
-			};
-		}
-		base.OnFrameworkInitializationCompleted();
-	}
+        if(ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.MainWindow = new MainWindow
+            {
+                DataContext = new MainWindowViewModel(),
+            };
+        }
+        base.OnFrameworkInitializationCompleted();
+    }
 }

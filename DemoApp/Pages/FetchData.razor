@@ -1,6 +1,6 @@
 ﻿@page "/fetchdata"
 
-@using WPFBlazorAppTemplate.Data
+@using DemoApp.Data
 @inject WeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
@@ -37,7 +37,7 @@ else
 }
 
 @code {
-    private WeatherForecast[] forecasts;
+    private WeatherForecast[]? forecasts;
 
     protected override async Task OnInitializedAsync()
     {
