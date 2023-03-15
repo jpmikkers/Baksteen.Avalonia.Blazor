@@ -2,9 +2,10 @@
     x:Class="DemoApp.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:blazor="clr-namespace:Baksteen.Avalonia.Blazor;assembly=Baksteen.Avalonia.Blazor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:blazor="clr-namespace:Baksteen.Avalonia.Blazor;assembly=Baksteen.Avalonia.Blazor"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="using:DemoApp.ViewModels"
     Title="Avalonia Blazor Hybrid demo"
     Width="700"
@@ -23,33 +24,79 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid
-        Margin="2"
-        ClipToBounds="True"
-        DockPanel.Dock="Left"
-        ShowGridLines="False">
-		
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Command="{CompiledBinding ExitCommand}" Header="E_xit">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/outline_close_white_24dp.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Zoom">
+                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_00%">
+                    <MenuItem.CommandParameter>
+                        <sys:Double>1.0</sys:Double>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/twotone_zoom_in_white_24dp.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_20%">
+                    <MenuItem.CommandParameter>
+                        <sys:Double>1.2</sys:Double>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/twotone_zoom_in_white_24dp.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_50%">
+                    <MenuItem.CommandParameter>
+                        <sys:Double>1.5</sys:Double>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/twotone_zoom_in_white_24dp.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
 
-        <Slider
-            Grid.Row="0"
-            Maximum="2.0"
-            Minimum="1.0"
-            Value="{CompiledBinding Zoom}" />
+        <Grid
+            Margin="2"
+            ClipToBounds="True"
+            ShowGridLines="False">
 
-        <Panel
-            Name="PanelView"
-            Grid.Row="1"
-            Background="Black">
-            <blazor:BlazorWebView
-                Name="WebView"
-                HostPage="index.html"
-                RootComponents="{DynamicResource rootComponents}"
-                Services="{DynamicResource services}"
-                ZoomFactor="{CompiledBinding Zoom}" />
-        </Panel>
-    </Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Panel
+                Name="PanelView"
+                Grid.Row="0"
+                Background="Black">
+                <blazor:BlazorWebView
+                    Name="WebView"
+                    HostPage="index.html"
+                    RootComponents="{DynamicResource rootComponents}"
+                    Services="{DynamicResource services}"
+                    ZoomFactor="{CompiledBinding Zoom}" />
+            </Panel>
+
+            <StackPanel
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Orientation="Horizontal"
+                Spacing="4">
+                <Label VerticalAlignment="Center">Zoom:</Label>
+                <Slider
+                    Width="100"
+                    Margin="4,-7,4,-7"
+                    VerticalAlignment="Center"
+                    Maximum="2.0"
+                    Minimum="1.0"
+                    Value="{CompiledBinding Zoom}" />
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 </Window>

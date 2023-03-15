@@ -25,5 +25,18 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         Resources.Add("rootComponents", rootComponents);
 
         InitializeComponent();
+    
+        this.WhenActivated(d => d(ViewModel!.ExitInteraction.RegisterHandler(DoExitAsync)));
+    }
+
+    private async Task DoExitAsync(InteractionContext<Unit, Unit> ic)
+    {
+        Close();
+        await Task.CompletedTask;
+        ic.SetOutput(Unit.Default);
+
+        //var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Error", ic.Input);
+        //await messageBoxStandardWindow.ShowDialog(this);
+        //ic.SetOutput(Unit.Default);
     }
 }
