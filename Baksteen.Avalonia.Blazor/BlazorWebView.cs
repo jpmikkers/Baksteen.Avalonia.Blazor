@@ -190,4 +190,16 @@ public class BlazorWebView : NativeControlHost
 
         base.DestroyNativeControlCore(control);
     }
+
+    // DestroyNativeControlCore doesn't seem to get called when the app is shutting down, so lets dispose the blazorwebview earlier..
+    protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        if(OperatingSystem.IsWindows())
+        {
+            _blazorWebView?.Dispose();
+            _blazorWebView = null;
+        }
+
+        base.OnDetachedFromVisualTree(e);
+    }
 }
