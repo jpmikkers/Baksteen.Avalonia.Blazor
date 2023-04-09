@@ -1,12 +1,9 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Dialogs;
 using Avalonia.ReactiveUI;
-using System;
+using DemoApp.Data;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using DemoApp.Data;
 
 namespace DemoApp;
 
@@ -26,10 +23,16 @@ internal class Program
         using var myApp = appBuilder.Build();
 
         myApp.Start();
-        BuildAvaloniaApp(myApp.Services)
-            .StartWithClassicDesktopLifetime(args);
 
-        Task.Run(async () => await myApp.StopAsync()).Wait();
+        try
+        {
+            BuildAvaloniaApp(myApp.Services)
+                .StartWithClassicDesktopLifetime(args);
+        }
+        finally
+        {
+            Task.Run(async () => await myApp.StopAsync()).Wait();
+        }
     }
 
     private static AppBuilder BuildAvaloniaApp(IServiceProvider serviceProvider)
