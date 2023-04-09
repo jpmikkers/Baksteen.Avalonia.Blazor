@@ -10,7 +10,7 @@ namespace Baksteen.Avalonia.Blazor;
 
 public class BlazorWebView : NativeControlHost
 {
-    private Uri _source = new Uri("http://localhost/");
+    private Uri? _source = null;
     private Microsoft.AspNetCore.Components.WebView.WindowsForms.BlazorWebView? _blazorWebView;
     private double _zoomFactor = 1.0;
     private string? _hostPage;
@@ -38,18 +38,6 @@ public class BlazorWebView : NativeControlHost
             x => x.RootComponents,
             (x, y) => x.RootComponents = y);
 
-    /*
-		/// <summary>
-		/// The <see cref="AvaloniaProperty" /> which backs the <see cref="Source" /> property.
-		/// </summary>
-		public static readonly DirectProperty<WebView, Uri> SourceProperty 
-			= AvaloniaProperty.RegisterDirect<WebView, Uri>(
-				nameof(Source), 
-				x => x.Source, 
-				(x, y) => x.Source = y);
-	*/
-    //public static readonly StyledProperty<string> LanguageProperty = AvaloniaProperty.Register<CoreWebView2CreationProperties, string>(nameof(Language));
-
     public string? HostPage
     {
         get
@@ -74,7 +62,7 @@ public class BlazorWebView : NativeControlHost
         }
     }
 
-    public Uri Source
+    public Uri? Source
     {
         get
         {
@@ -161,23 +149,10 @@ public class BlazorWebView : NativeControlHost
             };
             _blazorWebView.WebView.ZoomFactor = Math.Clamp(_zoomFactor, 0.1, 4.0);
             _blazorWebView.RootComponents.AddRange(_rootComponents);
-            _blazorWebView.BlazorWebViewInitialized = OnBlazorWebViewInitialized;
-            _blazorWebView.BlazorWebViewInitializing = OnBlazorWebViewInitializing;
             return new PlatformHandle(_blazorWebView.Handle, "HWND");
         }
 
         return base.CreateNativeControlCore(parent);
-    }
-
-    protected void OnBlazorWebViewInitializing(object? sender, BlazorWebViewInitializingEventArgs args)
-    {
-        // args.UserDataFolder
-        // args.BrowserExecutableFolder
-        // args.EnvironmentOptions
-    }
-
-    protected void OnBlazorWebViewInitialized(object? sender, BlazorWebViewInitializedEventArgs args)
-    {
     }
 
     protected override void DestroyNativeControlCore(IPlatformHandle control)
