@@ -3,8 +3,6 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using DemoApp.ViewModels;
 using DemoApp.Views;
-using ReactiveUI;
-using Avalonia.ReactiveUI;
 namespace DemoApp;
 
 public partial class App : Application

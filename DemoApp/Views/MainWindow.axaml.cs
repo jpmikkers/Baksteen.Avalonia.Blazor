@@ -1,13 +1,8 @@
 using Avalonia.ReactiveUI;
 using DemoApp.ViewModels;
+using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using ReactiveUI;
 using System.Reactive;
-using System.Threading.Tasks;
-using Avalonia.Platform.Storage;
-using Avalonia.Controls;
-using Microsoft.Extensions.DependencyInjection;
-using DemoApp.Data;
-using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 
 namespace DemoApp.Views;
 
@@ -34,9 +29,5 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         Close();
         await Task.CompletedTask;
         ic.SetOutput(Unit.Default);
-
-        //var messageBoxStandardWindow = MessageBox.Avalonia.MessageBoxManager.GetMessageBoxStandardWindow("Error", ic.Input);
-        //await messageBoxStandardWindow.ShowDialog(this);
-        //ic.SetOutput(Unit.Default);
     }
 }
