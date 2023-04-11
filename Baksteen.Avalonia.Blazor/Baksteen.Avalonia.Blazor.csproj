@@ -20,7 +20,7 @@
 	  <PackageReleaseNotes>First release.</PackageReleaseNotes>
 	  <Copyright>Copyright (c) JPMikkers 2023</Copyright>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <Version>0.5.0</Version>
+	  <Version>0.5.0-preview</Version>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
