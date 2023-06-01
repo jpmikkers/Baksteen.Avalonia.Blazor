@@ -13,14 +13,14 @@
 	  <PackageTags>avalonia;blazor;blazorhybrid;hybrid;webview;webview2</PackageTags>
 	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	  <Authors>jpmikkers</Authors>
-	  <Description>BlazorWebView for Avalonia 11 (preview 6).</Description>
+	  <Description>BlazorWebView for Avalonia 11 (rc 1).</Description>
 	  <RepositoryType>git</RepositoryType>
 	  <RepositoryUrl>https://github.com/jpmikkers/Baksteen.Avalonia.Blazor.git</RepositoryUrl>
 	  <PackageProjectUrl>https://github.com/jpmikkers/Baksteen.Avalonia.Blazor</PackageProjectUrl>
 	  <PackageReleaseNotes>First release.</PackageReleaseNotes>
 	  <Copyright>Copyright (c) JPMikkers 2023</Copyright>
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
-	  <Version>0.5.0-preview</Version>
+	  <Version>0.5.0-a11rc1</Version>
 	  <PackageIcon>icon.png</PackageIcon>
 	  <IncludeSymbols>False</IncludeSymbols>
   </PropertyGroup>
@@ -28,8 +28,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.0-preview8" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-preview8" />
+    <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.0-rc1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.59" />
   </ItemGroup>
   <ItemGroup>
