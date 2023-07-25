@@ -27,14 +27,15 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Command="{CompiledBinding ExitCommand}" Header="E_xit">
+                <MenuItem Command="{CompiledBinding DoExitCommand}" Header="E_xit">
                     <MenuItem.Icon>
                         <Image Source="/Assets/outline_close_white_24dp.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+
             <MenuItem Header="_Zoom">
-                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_00%">
+                <MenuItem Command="{CompiledBinding DoZoomCommand}" Header="1_00%">
                     <MenuItem.CommandParameter>
                         <sys:Double>1.0</sys:Double>
                     </MenuItem.CommandParameter>
@@ -42,7 +43,7 @@
                         <Image Source="/Assets/twotone_zoom_in_white_24dp.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_20%">
+                <MenuItem Command="{CompiledBinding DoZoomCommand}" Header="1_20%">
                     <MenuItem.CommandParameter>
                         <sys:Double>1.2</sys:Double>
                     </MenuItem.CommandParameter>
@@ -50,7 +51,7 @@
                         <Image Source="/Assets/twotone_zoom_in_white_24dp.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="{CompiledBinding ZoomCommand}" Header="1_50%">
+                <MenuItem Command="{CompiledBinding DoZoomCommand}" Header="1_50%">
                     <MenuItem.CommandParameter>
                         <sys:Double>1.5</sys:Double>
                     </MenuItem.CommandParameter>
@@ -60,7 +61,6 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-
         <Grid
             Margin="2"
             ClipToBounds="True"

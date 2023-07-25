@@ -38,9 +38,10 @@ internal class Program
     private static AppBuilder BuildAvaloniaApp(IServiceProvider serviceProvider)
         => AppBuilder.Configure<App>(() => new App(serviceProvider))
             .UsePlatformDetect()
+            .WithInterFont()
             .LogToTrace()
             //.UseManagedSystemDialogs()
-            .UseReactiveUI();
+            ;//.UseReactiveUI();
 
     // Avalonia configuration, don't remove; also used by visual designer.
     public static AppBuilder BuildAvaloniaApp() => BuildAvaloniaApp(null!);

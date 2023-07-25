@@ -1,50 +1,32 @@
-using System;
-using ReactiveUI;
-using System.IO;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Linq;
-using System.Net.Sockets;
-using System.ComponentModel.DataAnnotations;
-using Avalonia.Threading;
-using static System.Net.WebRequestMethods;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace DemoApp.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase
 {
+    [ObservableProperty]
     private double _zoom = 1.0;
-    public ReactiveCommand<Unit, Unit> ExitCommand { get; }
-    public ReactiveCommand<double, Unit> ZoomCommand { get; }
-    public Interaction<Unit, Unit> ExitInteraction { get; }
-
-    public double Zoom
-    {
-        get => _zoom;
-        set => this.RaiseAndSetIfChanged(ref _zoom, value);
-    }
 
     public MainWindowViewModel()
     {
         if(!Avalonia.Controls.Design.IsDesignMode)
         {
         }
-        ExitCommand = ReactiveCommand.CreateFromTask(OnExit);
-        ZoomCommand = ReactiveCommand.CreateFromTask<double,Unit>(OnZoom);
-        ExitInteraction = new Interaction<Unit, Unit>();
     }
 
-    private async Task OnExit()
+    [RelayCommand]
+    private void DoExit()
     {
-        await ExitInteraction.Handle(Unit.Default);
+        // the viewmodel should never talk to the view (MainWindow) directly, so we can't close the program here.
+        // the solution I use here is to send a (self defined) DoExitMessage which will be handled by the view.
+        WeakReferenceMessenger.Default.Send<DoExitMessage>();
     }
 
-    private async Task<Unit> OnZoom(double zoom)
+    [RelayCommand]
+    private void DoZoom(double zoomfactor)
     {
-        Zoom = zoom;
-        await Task.CompletedTask;
-        return Unit.Default;
+        Zoom = zoomfactor;
     }
 }

@@ -1,12 +1,11 @@
-using Avalonia.ReactiveUI;
+using Avalonia.Controls;
+using CommunityToolkit.Mvvm.Messaging;
 using DemoApp.ViewModels;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
-using ReactiveUI;
-using System.Reactive;
 
 namespace DemoApp.Views;
 
-public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
+public partial class MainWindow : Window
 {
     public MainWindow()
     {
@@ -20,14 +19,14 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
         Resources.Add("rootComponents", rootComponents);
 
         InitializeComponent();
-    
-        this.WhenActivated(d => d(ViewModel!.ExitInteraction.RegisterHandler(DoExitAsync)));
-    }
 
-    private async Task DoExitAsync(InteractionContext<Unit, Unit> ic)
-    {
-        Close();
-        await Task.CompletedTask;
-        ic.SetOutput(Unit.Default);
+        // see: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/messenger
+        WeakReferenceMessenger.Default.Register<MainWindow, DoExitMessage>(this, (r, m) =>
+        {
+            // Handle the message here, with r being the recipient and m being the
+            // input message. Using the recipient passed as input makes it so that
+            // the lambda expression doesn't capture "this", improving performance.
+            r.Close();
+        });
     }
 }
