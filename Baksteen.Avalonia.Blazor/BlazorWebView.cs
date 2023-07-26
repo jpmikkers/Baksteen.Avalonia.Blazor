@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Platform;
-using DynamicData;
+//using DynamicData;
 using Microsoft.AspNetCore.Components.WebView;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using System;
@@ -150,7 +150,12 @@ public class BlazorWebView : NativeControlHost
                 Services = _serviceProvider,
             };
             _blazorWebView.WebView.ZoomFactor = Math.Clamp(_zoomFactor, 0.1, 4.0);
-            _blazorWebView.RootComponents.AddRange(_rootComponents);
+
+            foreach(var component in _rootComponents)
+            {
+                _blazorWebView.RootComponents.Add(component);
+            }
+
             return new PlatformHandle(_blazorWebView.Handle, "HWND");
         }
 
