@@ -30,7 +30,7 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.5" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.100" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.101" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
