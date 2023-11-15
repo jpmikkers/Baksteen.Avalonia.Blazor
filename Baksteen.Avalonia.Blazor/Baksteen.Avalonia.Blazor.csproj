@@ -3,7 +3,7 @@
 		<Title>Baksteen.Avalonia.Blazor</Title>
 		<Summary>Avalonia BlazorWebView component</Summary>
 		<Description>Avalonia BlazorWebView component</Description>
-		<TargetFramework>net7.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>Baksteen.Avalonia.Blazor</RootNamespace>
 		<Nullable>enable</Nullable>
@@ -28,7 +28,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="7.0.101" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="icon.png">
