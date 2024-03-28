@@ -1,0 +1,38 @@
+﻿@page "/avainterop"
+
+@using DemoApp.Data
+@inject AvaloniaFilePickerService FilePickerService;
+
+<h1>Avalonia Interop</h1>
+
+<p>This component demonstrates interop with avalonia from within blazor</p>
+
+<button class="btn btn-primary" @onclick="OpenFilePicker">Select file</button>
+
+<br />
+<br />
+
+@if(selectedFile is not null)
+{
+    <p>The selected file is: <b>@selectedFile</b></p>
+
+    <h2>Selected file content:</h2>
+
+    <p>@fileContent</p>
+}
+
+@code {
+    private string? selectedFile;
+    private string? fileContent;
+
+    private async Task OpenFilePicker()
+    {
+        selectedFile = await FilePickerService.SelectFile();
+
+        // Open reading stream from the first file.
+        if (selectedFile is not null)
+        {
+            fileContent = await File.ReadAllTextAsync(selectedFile, CancellationToken.None);
+        }
+    }
+}
