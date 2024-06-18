@@ -27,7 +27,7 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.0.10" />
+		<PackageReference Include="Avalonia" Version="11.0.11" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.60" />
 	</ItemGroup>
 	<ItemGroup>
