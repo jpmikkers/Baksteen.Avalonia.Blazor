@@ -28,7 +28,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.1.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.70" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.71" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="icon.png">
