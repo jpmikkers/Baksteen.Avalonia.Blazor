@@ -27,8 +27,8 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="11.1.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.71" />
+		<PackageReference Include="Avalonia" Version="11.1.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="8.0.80" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="icon.png">
