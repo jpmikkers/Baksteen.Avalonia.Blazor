@@ -1,8 +1,4 @@
 using Avalonia;
-using DemoApp.Data;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace DemoApp;
 

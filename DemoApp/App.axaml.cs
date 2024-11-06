@@ -2,7 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using DemoApp.Data;
+using DemoApp.Services;
 using DemoApp.ViewModels;
 using DemoApp.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,7 +42,6 @@ public partial class App : Application
         appBuilder.Logging.AddDebug();
         appBuilder.Services.AddWindowsFormsBlazorWebView();
         appBuilder.Services.AddBlazorWebViewDeveloperTools();
-        appBuilder.Services.AddSingleton<WeatherForecastService>();
         appBuilder.Services.AddSingleton<AvaloniaFilePickerService>();
         using var myApp = appBuilder.Build();
         App.AppHost = myApp;

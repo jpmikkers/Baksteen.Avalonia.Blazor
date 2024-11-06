@@ -1,4 +1,4 @@
-﻿namespace DemoApp.Data;
+﻿namespace DemoApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,9 @@ using Avalonia.Platform.Storage;
 
 public class AvaloniaFilePickerService
 {
+#pragma warning disable CA1822 // Mark members as static
     public async Task<string?> SelectFile()
+#pragma warning restore CA1822 // Mark members as static
     {
         if(Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
         {

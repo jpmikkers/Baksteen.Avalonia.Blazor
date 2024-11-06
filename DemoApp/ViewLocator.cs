@@ -3,7 +3,6 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using DemoApp.ViewModels;
 using System;
-using System.Xml.Linq;
 
 public class ViewLocator : IDataTemplate
 {

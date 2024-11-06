@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.Messaging;
+using DemoApp.Components;
 using DemoApp.ViewModels;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 
@@ -11,7 +12,7 @@ public partial class MainWindow : Window
     {
         var rootComponents = new RootComponentsCollection()
         {
-            new RootComponent("#app", typeof(DemoApp.Main), null)
+            new RootComponent("#app", typeof(Routes), null)
         };
 
         Resources.Add("services", App.AppHost!.Services);
