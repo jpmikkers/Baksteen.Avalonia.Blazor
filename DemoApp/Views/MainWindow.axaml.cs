@@ -10,13 +10,10 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        var rootComponents = new RootComponentsCollection()
+        if (!Design.IsDesignMode)
         {
-            new RootComponent("#app", typeof(Routes), null)
-        };
-
-        Resources.Add("services", App.AppHost!.Services);
-        Resources.Add("rootComponents", rootComponents);
+            Resources.Add("services", App.AppHost!.Services);
+        }
 
         InitializeComponent();
 

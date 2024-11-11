@@ -1,10 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.Platform;
 using Avalonia.Interactivity;
 using Avalonia.Platform;
-//using DynamicData;
-using Microsoft.AspNetCore.Components.WebView;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using System;
 
@@ -17,7 +14,7 @@ public class BlazorWebView : NativeControlHost
     private double _zoomFactor = 1.0;
     private string? _hostPage;
     private IServiceProvider _serviceProvider = default!;
-    private RootComponentsCollection _rootComponents = new();
+    private RootComponentsCollection _rootComponents = [];
 
     /// <summary>
     /// The <see cref="AvaloniaProperty" /> which backs the <see cref="ZoomFactor" /> property.
@@ -28,6 +25,7 @@ public class BlazorWebView : NativeControlHost
             x => x.ZoomFactor,
             (x, y) => x.ZoomFactor = y);
 
+    // note to self: these things are only needed if you want to enable Binding for a particular property
     public static readonly DirectProperty<BlazorWebView, IServiceProvider> ServicesProperty
         = AvaloniaProperty.RegisterDirect<BlazorWebView, IServiceProvider>(
             nameof(Services),
@@ -114,14 +112,11 @@ public class BlazorWebView : NativeControlHost
 
     public IServiceProvider Services
     {
-        get
-        {
-            return _serviceProvider;
-        }
+        get => _serviceProvider;
         set
         {
             _serviceProvider = value;
-            if(_blazorWebView != null)
+            if (_blazorWebView != null)
             {
                 _blazorWebView.Services = _serviceProvider;
             }
@@ -130,19 +125,27 @@ public class BlazorWebView : NativeControlHost
 
     public RootComponentsCollection RootComponents
     {
-        get
-        {
-            return _rootComponents;
-        }
+        get => _rootComponents;
         set
         {
-            _rootComponents = value;
+            if (_rootComponents != value)
+            {
+                _rootComponents = value;
+                WrappedRootComponents = new WrappedRootComponentsCollection(_rootComponents);
+            }
         }
     }
 
+    /// <summary>
+    /// This property is a wrapper for <seealso cref="RootComponents"/>. It enables us to set the blazor app component 
+    /// directly from XAML. This can't be done with the original RootComponents because the child items of type 
+    /// WinForm RootComponent do not have a default constructor, so the XAML compiler can't instantiate those.
+    /// </summary>
+    public WrappedRootComponentsCollection WrappedRootComponents { get; private set; }
+
     protected override IPlatformHandle CreateNativeControlCore(IPlatformHandle parent)
     {
-        if(OperatingSystem.IsWindows())
+        if(OperatingSystem.IsWindows() && !Design.IsDesignMode)
         {
             _blazorWebView = new()
             {
@@ -184,5 +187,10 @@ public class BlazorWebView : NativeControlHost
             _blazorWebView = null;
         }
         base.OnUnloaded(e);
+    }
+
+    public BlazorWebView()
+    {
+        WrappedRootComponents = new(_rootComponents);
     }
 }

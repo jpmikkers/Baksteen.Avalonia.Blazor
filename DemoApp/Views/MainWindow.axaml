@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:blazor="clr-namespace:Baksteen.Avalonia.Blazor;assembly=Baksteen.Avalonia.Blazor"
+    xmlns:blazorcomponents="using:DemoApp.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -78,9 +79,12 @@
                 <blazor:BlazorWebView
                     Name="WebView"
                     HostPage="index.html"
-                    RootComponents="{DynamicResource rootComponents}"
                     Services="{DynamicResource services}"
-                    ZoomFactor="{CompiledBinding Zoom}" />
+                    ZoomFactor="{CompiledBinding Zoom}">
+                    <blazor:BlazorWebView.WrappedRootComponents>
+                        <blazor:WrappedRootComponent ComponentType="{x:Type blazorcomponents:Routes}" Selector="#app" />
+                    </blazor:BlazorWebView.WrappedRootComponents>
+                </blazor:BlazorWebView>
             </Panel>
 
             <StackPanel
