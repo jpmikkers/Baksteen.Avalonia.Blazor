@@ -4,6 +4,7 @@
 		<Summary>Avalonia BlazorWebView component</Summary>
 		<Description>Avalonia BlazorWebView component</Description>
 		<TargetFramework>net9.0-windows</TargetFramework>
+		<!--<TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>-->
 		<LangVersion>latest</LangVersion>
 		<RootNamespace>Baksteen.Avalonia.Blazor</RootNamespace>
 		<Nullable>enable</Nullable>
