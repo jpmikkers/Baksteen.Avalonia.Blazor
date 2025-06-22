@@ -31,14 +31,11 @@
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.1" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="9.0.71" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="9.0.80" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3296.44">
-      <!-- this fixes the stupid MSB3277 warning about WindowsBase 4.0 vs 5.0 version conflict  -->
-      <ExcludeAssets>Build</ExcludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3296.44"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Baksteen.Avalonia.Blazor\Baksteen.Avalonia.Blazor.csproj" />
