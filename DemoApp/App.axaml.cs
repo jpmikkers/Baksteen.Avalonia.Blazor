@@ -1,6 +1,5 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using DemoApp.Services;
 using DemoApp.ViewModels;
@@ -13,20 +12,24 @@ namespace DemoApp;
 
 public partial class App : Application
 {
-    public static IHost? AppHost { get; private set; }
+    public static IHost? AppHost
+    {
+        get; private set;
+    }
 
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+
+#if DEBUG
+        this.AttachDeveloperTools();
+#endif
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if(ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Line below is needed to remove Avalonia data validation.
-            // Without this line you will get duplicate validations from both Avalonia and CT
-            BindingPlugins.DataValidators.RemoveAt(0);
             desktop.MainWindow = new MainWindow
             {
                 DataContext = new MainWindowViewModel(),
@@ -53,7 +56,7 @@ public partial class App : Application
             buildAvaloniaApp()
                 .StartWithClassicDesktopLifetime(args);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex.ToString());
         }

@@ -19,5 +19,5 @@ internal class Program
             .UsePlatformDetect()
             .WithInterFont()
             .LogToTrace();
-            //.UseManagedSystemDialogs()
+    //.UseManagedSystemDialogs()
 }
